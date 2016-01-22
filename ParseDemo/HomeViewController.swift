@@ -11,9 +11,14 @@ import Parse
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var userNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+//        Changes the "User Name" string to the actual user.username
+        if let pUserName = PFUser.currentUser()?["username"] as? String {
+            self.userNameLabel.text = "@" + pUserName
+        }
     }
 
     override func didReceiveMemoryWarning() {
